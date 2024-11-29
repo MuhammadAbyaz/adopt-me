@@ -18,8 +18,9 @@ const SearchParams = () => {
   const [animal, setAnimal] = useState("");
   const [breads] = useBreedList(animal);
   return (
-    <div className="search-params">
+    <div className="my-0 mx-auto w-11/12">
       <form
+        className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col justify-center items-center"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
@@ -38,11 +39,18 @@ const SearchParams = () => {
         )}
         <label htmlFor="location">
           Location
-          <input id="location" name="location" placeholder="location" />
+          <input
+            type="text"
+            id="location"
+            name="location"
+            className="search-input"
+            placeholder="location"
+          />
         </label>
         <label htmlFor="animal">
           Animal
           <select
+            className="search-input"
             id="animal"
             value={animal}
             placeholder="animal"
@@ -64,6 +72,7 @@ const SearchParams = () => {
           Breed
           <select
             id="breed"
+            className="search-input grayed-out-disable"
             name="breed"
             disabled={breads.length === 0}
             placeholder="breed"
@@ -78,9 +87,11 @@ const SearchParams = () => {
             })}
           </select>
         </label>
-        <button>Submit</button>
+        <button className="rounded px-6 py-2 text-white hover:opacity-50 border-none bg-orange-500">
+          Submit
+        </button>
       </form>
-      <div className="search">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {res.isLoading ? (
           <div className="loading-pane">
             <h1>Loading</h1>
